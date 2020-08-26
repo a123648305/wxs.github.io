@@ -1,25 +1,39 @@
 <template>
-    <div id="app">
-        <router-view/>
-    </div>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png" />
+    现在是北京时间：{{time}}
+    <button @click="fetch">请求</button>
+  </div>
 </template>
 
-<style lang="less">
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      time: null,
+    };
+  },
+  mounted() {
+    setInterval(() => {
+      this.time = new Date().toISOString();
+    }, 1000);
+  },
+  methods: {
+    fetch() {
+      alert('hello world');
+    },
+  },
+};
+</script>
+
+<style>
 #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
-#nav {
-    padding: 30px;
-    a {
-        font-weight: bold;
-        color: #2c3e50;
-        &.router-link-exact-active {
-            color: #42b983;
-        }
-    }
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
